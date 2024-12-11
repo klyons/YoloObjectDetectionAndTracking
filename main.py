@@ -2,12 +2,14 @@ import torch
 from PIL import Image
 import cv2
 import tracking
+from ultralytics import YOLO
 
 
 class ObjectTracker:
     def __init__(self, video_file):
         # Inference
-        self.model = torch.hub.load("ultralytics/yolov5", "yolov5x", pretrained=True)
+        #self.model = torch.hub.load("ultralytics/yolov11", "yolov11x", pretrained=True)
+        self.model = YOLO('yolo11n.pt')
         self.model.eval()
 
         # Tracking
